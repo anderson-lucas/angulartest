@@ -7,14 +7,14 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  @Output() private callback = new EventEmitter();
+  @Output() private toggleSidebar = new EventEmitter();
   
   constructor() { }
 
   ngOnInit() {
   }
   
-  toggleSidenav() {
-    this.callback.emit('teste')
+  toggle() {
+    this.toggleSidebar.emit(null)
   }
 }

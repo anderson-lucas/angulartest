@@ -1,19 +1,17 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav #sidenav mode="push" [(opened)]="opened">
-    <mat-toolbar color="primary">
+    <mat-toolbar>
       <span class="fill-remaining-space">Menu</span>
     </mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="#"><mat-icon>home</mat-icon> Home</a>
-      <a mat-list-item href="#"><mat-icon>user</mat-icon> Clientes</a>
-      <a mat-list-item href="#"><mat-icon>build</mat-icon> Imóveis</a>
-      <a mat-list-item href="#">Contratos</a>
-      <a mat-list-item href="#">Configurações</a>
-      <a mat-list-item href="#"><mat-icon>code</mat-icon> Teste Api</a>
-    </mat-nav-list>
+    <mat-list class="list-menu">
+      <mat-list-item *ngFor="let menu of menus">
+        <mat-icon matListIcon>{{ menu.icone }}</mat-icon>
+        <h3 matLine>{{ menu.nome }}</h3>
+      </mat-list-item>
+    </mat-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar>
       <span class="fill-remaining-space">
         <button mat-icon-button (click)="sidenav.toggle()">
           <mat-icon>menu</mat-icon>

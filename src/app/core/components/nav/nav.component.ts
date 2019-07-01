@@ -8,6 +8,14 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 export class NavComponent implements OnInit {
 
   @Output() private callback = new EventEmitter();
+
+  private menus: Array<any> = [
+    {nome: "Home", icone: "home", link: "home"},
+    {nome: "Clientes", icone: "home", link: "home"},
+    {nome: "Imóveis", icone: "home", link: "home"},
+    {nome: "Contratos", icone: "home", link: "home"},
+    {nome: "Configurações", icone: "home", link: "home"},
+  ];
   
   constructor() { }
 

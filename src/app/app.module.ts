@@ -1,19 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+/* Shared */
 import { AngularMaterialModule } from './shared/angular-material.module';
-import { NavbarComponent } from './core/components/navbar/navbar.component';
-import { SidebarComponent } from './core/sidebar/sidebar.component';
-import { FormsModule } from '@angular/forms';
+
+/* Services */
+import { TitleService } from './core/services/title.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    SidebarComponent,
+    routingComponents,
   ],
   imports: [
     FormsModule,
@@ -21,8 +23,9 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [TitleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

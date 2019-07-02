@@ -1,2 +1,45 @@
-<app-navbar (toggleSidebar)="toggleSidebar($event)"></app-navbar>
-<app-sidebar [opened]="opened"></app-sidebar>
+<mat-sidenav-container class="example-container" *ngIf="!isLogin; else viewLogin">
+  <mat-sidenav #sidenav mode="over" [(opened)]="opened">
+    <mat-toolbar>
+      <span>Menu</span>
+      <span class="fill-remaining-space"></span>
+      <button mat-icon-button (click)="sidenav.close()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar>
+    <div class="sidenav-content">
+      <mat-list class="list-menu">
+        <mat-list-item *ngFor="let menu of menus" routerLink="{{menu.link}}" routerLinkActive="active" (click)="closeSidenav()">
+          <mat-icon matListIcon>{{ menu.icone }}</mat-icon>
+          <h3 matLine>{{ menu.nome }}</h3>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="fill-remaining-space"></span>
+      <span>{{ appName }}</span>
+      <span class="fill-remaining-space"></span>
+      <button mat-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          Perfil
+        </button>
+        <button mat-menu-item (click)="logout()">
+          Sair
+        </button>
+      </mat-menu>
+    </mat-toolbar>
+    <mat-card class="content">
+      <router-outlet></router-outlet>
+    </mat-card>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<ng-template #viewLogin>
+  <router-outlet></router-outlet>
+</ng-template>

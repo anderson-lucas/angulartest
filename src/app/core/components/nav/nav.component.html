@@ -1,0 +1,24 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="push" [(opened)]="opened">
+    <mat-toolbar>
+      <span class="fill-remaining-space">Menu</span>
+    </mat-toolbar>
+    <mat-list class="list-menu">
+      <mat-list-item *ngFor="let menu of menus">
+        <mat-icon matListIcon>{{ menu.icone }}</mat-icon>
+        <h3 matLine>{{ menu.nome }}</h3>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <span class="fill-remaining-space">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </span>
+      <span class="fill-remaining-space">Locashow</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

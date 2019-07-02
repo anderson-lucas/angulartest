@@ -1,0 +1,36 @@
+.card-login {
+  margin: auto;
+  height: min-content;
+  width: min-content;
+  border: 1px solid #000;
+  padding: 25px;
+}
+
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+:host {
+  display: flex;
+  justify-content: center;
+  margin: 100px 0px;
+}
+
+.mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+
+.error {
+  padding: 16px;
+  width: 300px;
+  color: white;
+  background-color: red;
+}
+
+.div-button {
+  display: flex;
+  justify-content: center;
+}

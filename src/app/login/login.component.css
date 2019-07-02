@@ -15,7 +15,7 @@ mat-card-content {
   display: flex;
   justify-content: center;
   margin: 100px 0px;
-  background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background-image: linear-gradient(to top, #e6b980 0%, #eacda3 100%);
 }
 
 .mat-form-field {
@@ -29,7 +29,7 @@ mat-card-content {
 }
 
 .div-button button {
-  padding: 2px 20px;
+  padding: 5px 20px;
   width: -webkit-fill-available;
 }
 
@@ -38,4 +38,12 @@ mat-card-content {
   margin: auto;
   display: flex;
   margin-bottom: 25px;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
+.padding-for-loading {
+  padding: 10.5px 0px !important;
 }

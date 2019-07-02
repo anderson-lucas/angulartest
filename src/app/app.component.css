@@ -1,7 +1,6 @@
 mat-toolbar {
-  /* background-color: #ff8025 !important; */
-  background-color: #dc7d2e;
-  background-image: linear-gradient(183deg, #dc7d2e 0%, #f7a546 74%);
+  background-color: #f09819;
+  /* background-image: linear-gradient(183deg, #dc7d2e 0%, #f7a546 74%); */
 }
 
 mat-sidenav-container {
@@ -29,11 +28,6 @@ mat-sidenav {
 .list-menu mat-list-item:focus {
   outline: none;
 }
-
-
-/* .list-menu mat-list-item.active {
-  background: rgba(0, 0, 0, .05);
-} */
 
 .sidenav-content {
   height: 100%;

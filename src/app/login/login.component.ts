@@ -9,6 +9,7 @@ import { AuthService } from '../core/services/auth.service';
 })
 export class LoginComponent {
 
+  private loading: boolean = false;
   private hide: boolean = true;
   private error: string = "";
   private form: FormGroup = new FormGroup({
@@ -26,6 +27,10 @@ export class LoginComponent {
   }
 
   submit() {
-    this.authService.login(this.form.value);
+    this.loading = true;
+    setTimeout(() => {
+      this.loading = false;
+      this.authService.login(this.form.value);
+    }, 1000);
   }
 }

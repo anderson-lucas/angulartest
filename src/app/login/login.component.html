@@ -4,19 +4,27 @@
     <form [formGroup]="form" (ngSubmit)="submit()">
       <mat-form-field appearance="outline" class="form-field-login">
         <mat-label>Usuário</mat-label>
-        <input type="text" matInput placeholder="Usuário" formControlName="username" required>
+        <input type="text" matInput formControlName="username" required autocomplete="off">
         <mat-error *ngIf="username.invalid">{{getErrorMessage('username')}}</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline" class="form-field-login">
         <mat-label>Senha</mat-label>
-        <input matInput placeholder="Senha" [type]="hide ? 'password' : 'text'" formControlName="password" required>
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required autocomplete="off">
+        <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
         <mat-error *ngIf="password.invalid">{{getErrorMessage('password')}}</mat-error>
       </mat-form-field>
       <div class="div-button">
-        <button type="submit" mat-raised-button color="primary" [disabled]="this.form.invalid">Login</button>
+        <button type="submit" mat-raised-button [disabled]="this.form.invalid" [class.padding-for-loading]="loading">
+          <div *ngIf="loading; then loadingBlock else loginBlock"></div>
+          <ng-template #loginBlock>
+            Entrar <mat-icon>input</mat-icon>
+          </ng-template>
+          <ng-template #loadingBlock>
+            <mat-spinner diameter="25"></mat-spinner>
+          </ng-template>
+        </button>
       </div>
     </form>
   </mat-card-content>

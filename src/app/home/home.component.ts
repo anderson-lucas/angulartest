@@ -11,10 +11,9 @@ export class HomeComponent implements OnInit {
   private user: IUser;
 
   constructor(private authService: AuthService) {
-    this.user = authService.getLoggedUser();
   }
 
   ngOnInit() {
-
+    this.user = this.authService.getLoggedUser();
   }
 }

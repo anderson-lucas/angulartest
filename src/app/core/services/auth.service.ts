@@ -24,10 +24,10 @@ export class AuthService {
       localStorage.setItem("loggedUser", JSON.stringify(user));
       this.router.navigate(["/home"]);
       return true;
+    } else {
+      this.notificationService.error("Usuário ou senha incorretos");
+      return false;
     }
-
-    this.notificationService.error("Usuário ou senha incorretos");
-    return false;
   }
 
   logout(): void {

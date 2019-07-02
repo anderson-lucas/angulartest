@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { NotificationService } from './notification.service';
 
 interface IUserLogin {
   username: string;
@@ -15,7 +16,7 @@ export interface IUser {
 })
 export class AuthService {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private notificationService: NotificationService) { }
 
   login(obj: IUserLogin): boolean {
     if (obj.username === "admin" && obj.password === "123") {
@@ -25,6 +26,7 @@ export class AuthService {
       return true;
     }
 
+    this.notificationService.error("Usuário ou senha incorretos");
     return false;
   }
 

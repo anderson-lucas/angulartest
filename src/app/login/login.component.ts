@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AuthService } from '../core/services/auth.service';
 
 @Component({
@@ -8,7 +7,9 @@ import { AuthService } from '../core/services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
+
+  private hide: boolean = true;
   private error: string = "";
   private form: FormGroup = new FormGroup({
     username: new FormControl("", Validators.required),
@@ -17,12 +18,14 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthService) { }
 
-  ngOnInit() {
+  get username() { return this.form.get("username") }
+  get password() { return this.form.get("password") }
+  
+  getErrorMessage(formControlName: string): string {
+    return this.form.get(formControlName).hasError("required") ? "Preencha este campo" : "";
   }
 
   submit() {
-    if (!this.authService.login(this.form.value)) {
-      this.error = "Usuário ou senha incorretos!";
-    }
+    this.authService.login(this.form.value);
   }
 }

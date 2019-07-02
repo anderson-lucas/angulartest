@@ -18,16 +18,14 @@ export class AppComponent implements OnInit {
     { nome: "Home", icone: "home", link: "/home" },
     { nome: "Clientes", icone: "people", link: "/clientes" },
     { nome: "Imóveis", icone: "location_city", link: "/imoveis" },
-    { nome: "Contratos", icone: "file_copy", link: "/contratos" },
+    { nome: "Contratos", icone: "assignment", link: "/contratos" },
     { nome: "Configurações", icone: "settings", link: "/configuracoes" },
   ];
   private opened: boolean = false;
   private isLogin: boolean = false;
   private userLogged: any = {};
 
-  constructor(private titleService: TitleService,
-              private router: Router,
-              private authService: AuthService) {
+  constructor(private titleService: TitleService, private router: Router, private authService: AuthService) {
     router.events.pipe(
       filter((event: any) => event instanceof NavigationStart)
     ).subscribe(event => {
